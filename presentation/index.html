@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+
+    <title>reveal.js</title>
+
+    <link rel="stylesheet" href="css/reset.css" />
+    <link rel="stylesheet" href="css/reveal.css" />
+    <link rel="stylesheet" href="css/theme/black.css" />
+
+    <!-- Theme used for syntax highlighting of code -->
+    <link rel="stylesheet" href="lib/css/monokai.css" />
+
+    <!-- Printing and PDF exports -->
+    <script>
+      var link = document.createElement('link');
+      link.rel = 'stylesheet';
+      link.type = 'text/css';
+      link.href = window.location.search.match(/print-pdf/gi) ? 'css/print/pdf.css' : 'css/print/paper.css';
+      document.getElementsByTagName('head')[0].appendChild(link);
+    </script>
+  </head>
+  <body>
+    <div class="reveal">
+      <div class="slides">
+        <section>
+          <h1>Maglev Trains</h1>
+          <small>briano</small>
+        </section>
+        <section>
+          <section>
+            <h2>What is Maglev?</h2>
+            <p>Magnetic Levitation occurs when the magnetic force counters the force of gravity</p>
+            <img src="../img/magnetic-levitation.jpg" alt="Magnetic Levitation" />
+          </section>
+          <section>
+            <img src="../img/magnetic-repulsion.png" alt="Magnetic Repulsion" />
+          </section>
+        </section>
+        <section>
+          <section>
+            <h2>Maglev Trains</h2>
+            <img src="../img/maglev-train.jpg" alt="Maglev Train" />
+            <small>Maglev train in Shanghai, China</small>
+          </section>
+          <section>
+            <ul>
+              <li>uses magnets to levitate</li>
+              <li>uses magnets to accelerate/decelerate</li>
+            </ul>
+          </section>
+          <section>
+            <h2>Pros</h2>
+            <ul>
+              <li>Extremely fast speed upto 600km/hr or $1.67*10^5ms^{-1}$</li>
+              <li>Smooth and quite operation</li>
+              <li>Uses less energy</li>
+              <li>Easy to maintain</li>
+              <li>Safer than conventional trains</li>
+            </ul>
+          </section>
+          <section>
+            <h2>Cons</h2>
+            <ul>
+              <li>Expensive tracks compared to the railroad tracks</li>
+              <li>Not compatible with railroad track, and therefore require the whole route to be rebuild</li>
+            </ul>
+          </section>
+          <section>
+            <h2>Speed vs Cost</h2>
+            <canvas id="costPerKM"></canvas>
+          </section>
+        </section>
+        <section>
+          <section>
+            <h2>How does it work?</h2>
+            <img src="../img/levitation-and-propulsion.jpg" alt="Levitation and Propulsion" />
+          </section>
+          <section>
+            <h2>Electromagnet</h2>
+            <img src="../img/electromagnet.jpg" alt="Electromagnet" />
+          </section>
+          <section>
+            <h2>Superconductor</h2>
+            <img src="../img/superconductor.jpg" alt="Superconductor" />
+          </section>
+          <section>
+            <h2>Meissner Effect</h2>
+            <img src="../img/meissner-effect.png" alt="Meissner effect" />
+          </section>
+        </section>
+        <section>
+          <section>
+            <h2>Electromagnetic suspension (EMS)</h2>
+            <img src="../img/ems-diagram.jpg" alt="EMS levitation" />
+          </section>
+          <section>
+            <ul>
+              <li>levitation magnets forces the train up countering the force of gravity</li>
+              <li>guidance magnet is constantly altered using a feedback loop to stabilize the train</li>
+            </ul>
+          </section>
+        </section>
+        <section>
+          <section>
+            <h2>Electrodynamic suspension (EDS)</h2>
+            <img src="../img/eds-diagram.jpg" alt="EDS levitation" />
+          </section>
+          <section>
+            <ul>
+              <li>uses repulsive magnets to lift the train</li>
+              <li>and figure 8 guidance magnets to support and stabilize the cabin</li>
+              <li>stable by the nature of repulsive forces</li>
+            </ul>
+          </section>
+        </section>
+        <section>
+          <section>
+            <h2>Electromagnetic propulsion (EMP)</h2>
+            <img src="../img/propulsion.png" alt="Electromagnetic propulsion" />
+          </section>
+          <section>
+            <ul>
+              <li>alternating current to switch the pole of the electromagnet</li>
+              <li>which creates a magnetic forces to accelerate/decelerate the train</li>
+            </ul>
+          </section>
+          <section>
+            <iframe class="stretch" src="https://www.youtube.com/embed/m-rNILcfTKM?start=35" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          </section>
+        </section>
+        <section>
+          <section>
+            <iframe class="stretch" src="https://www.youtube.com/embed/J9b0J29OzAU?start=42" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          </section>
+          <section><img src="../img/tripole.jpg" alt="Tripole magnetic field lines" /></section>
+          <section><img src="../img/tripole.png" alt="Tripole magnetic field lines" /></section>
+        </section>
+        <section>end.</section>
+      </div>
+    </div>
+
+    <script src="js/reveal.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+
+    <script>
+      var ctx = document.getElementById('costPerKM').getContext('2d');
+      var chart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+          labels: ['Maglev', 'High Speed', 'Traditional'],
+          datasets: [
+            {
+              label: 'km/h',
+              backgroundColor: '#3689e6',
+              data: [600, 320, 110]
+            },
+            {
+              label: 'million $ per km',
+              backgroundColor: '#68b723',
+              data: [125, 50, 2]
+            },
+            {
+              label: 'km/h per 100k$',
+              backgroundColor: '#a56de2',
+              data: [48, 64, 550]
+            }
+          ]
+        },
+        options: {}
+      });
+    </script>
+
+    <script>
+      // Add stretch class attribute to all img tag in document
+      console.log(document.querySelectorAll('img'));
+      document.querySelectorAll('img').forEach(e => {
+        e.setAttribute('class', 'stretch');
+      });
+    </script>
+
+    <script>
+      // More info about config & dependencies:
+      // - https://github.com/hakimel/reveal.js#configuration
+      // - https://github.com/hakimel/reveal.js#dependencies
+      Reveal.initialize({
+        math: {
+          mathjax: 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js',
+          config: 'TeX-AMS_HTML-full'
+        },
+
+        dependencies: [{ src: 'plugin/markdown/marked.js' }, { src: 'plugin/markdown/markdown.js' }, { src: 'plugin/math/math.js', async: true }, { src: 'plugin/notes/notes.js', async: true }, { src: 'plugin/highlight/highlight.js', async: true }]
+      });
+    </script>
+  </body>
+</html>
